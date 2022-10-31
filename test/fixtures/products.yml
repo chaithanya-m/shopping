@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  productName: MyString
+  productType: MyString
+  productPrize: 1
+  saveProduct: false
+
+two:
+  productName: MyString
+  productType: MyString
+  productPrize: 1
+  saveProduct: false
