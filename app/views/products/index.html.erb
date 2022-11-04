@@ -1,6 +1,6 @@
 <h4>search for new produts</h4>
 
-<%= form_with url: "products/search", method: :get do |form| %>
+<%= form_with url: products_search_products_path, method: :get do |form| %>
   <%= form.text_field :search %>
   <%= form.submit "Search" %>
 <% end %>
@@ -10,13 +10,14 @@
 	<div>
 		<h3><%= product.productName %></h3>
 		<h4>Rs.<%= product.productPrize %></h4>
-		<% if product.saveProduct %>
-		<button> Add to cart</button>
-		<% end %>
-	</div>
+		<%= link_to "Add to cart" %>
+ 	</div>
 
       
   <% end %>
 	
+</div>
+<div>
+	<h2>cart</h2>
 </div>
   

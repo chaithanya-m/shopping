@@ -1,7 +1,4 @@
 class Product < ApplicationRecord
-
-
-	def search
-		debugger
-	end
+	has_many :cart_items
+	has_many :carts
 end
