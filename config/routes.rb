@@ -7,10 +7,14 @@ Rails.application.routes.draw do
     end
 
   end
-  resources :carts do
-  end
+  # resources :carts do
+  # end
   resources :cart_items do
   end
+  resources :order_items do
+  end
+  # resources :orders do
+  # end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

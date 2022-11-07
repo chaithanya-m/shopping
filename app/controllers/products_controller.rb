@@ -1,6 +1,10 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all
+    @cart = Cart.last || Cart.create
+    @cart_items = @cart.cart_items
+
+    
     
   end
  

@@ -10,7 +10,7 @@
 	<div>
 		<h3><%= product.productName %></h3>
 		<h4>Rs.<%= product.productPrize %></h4>
-		<%= link_to "Add to cart" %>
+		<%= link_to "Add to cart", 'http://localhost:3000/cart_items?'+{product_id:product.id}.to_param,  data: { "turbo-method": :post }  %>
  	</div>
 
       
@@ -19,5 +19,22 @@
 </div>
 <div>
 	<h2>cart</h2>
+	<% @cart_items.each do |cart_item| %>
+	<div>
+		<h3><%= cart_item.product.productName %></h3>
+		<h4>Rs.<%= cart_item.product.productPrize %></h4>
+	
+		<%= link_to "Remove from cart", cart_item_path(id:cart_item.id), :confirm => 'Are you sure?', :class => "button",data: { "turbo-method": :delete }  %>
+		
+ 	</div>
+  <% end %>
+  <% if @cart_items !=[] %>
+  <%= link_to "place Order", 'http://localhost:3000/order_items',  data: { "turbo-method": :post }  %>
+  <% end %>
 </div>
+<div>
+	<%= link_to "check orders", order_items_path%>
+</div>
+
+
   

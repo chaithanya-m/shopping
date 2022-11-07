@@ -1,0 +1,10 @@
+<div>
+	<h2>Ordered products</h2>
+	<% @order_items.each do |order_item| %>
+	<div>
+		<h3><%= order_item.product.productName %></h3>
+		<h4>Rs.<%= order_item.productPrize %></h4>
+		<%= link_to "cancel order", order_item_path(id:order_item.id), data: { "turbo-method": :delete }  %>
+  <% end %>
+  <%= link_to "back", products_path%>
+</div>
