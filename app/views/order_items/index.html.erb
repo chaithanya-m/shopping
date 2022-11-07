@@ -6,5 +6,6 @@
 		<h4>Rs.<%= order_item.productPrize %></h4>
 		<%= link_to "cancel order", order_item_path(id:order_item.id), data: { "turbo-method": :delete }  %>
   <% end %>
+  <p>Rs <%= @order.totalPrize %></p>
   <%= link_to "back", products_path%>
 </div>
