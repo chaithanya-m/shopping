@@ -1,0 +1,20 @@
+<h2>cart</h2>
+	<% @cart_items.each do |cart_item| %>
+	<div>
+		<h3><%= cart_item.product.productName %></h3>
+		<h4>Rs.<%= cart_item.product.productPrice %></h4>
+
+		<%= link_to "-", decrement_cart_item_path(cart_item.id), :class => "button",data: { "turbo-method": :post }  %>
+		<h4><%= cart_item.quantity %></h4>
+		<%= link_to "+", increment_cart_item_path(cart_item.id), :class => "button",data: { "turbo-method": :post }  %>
+	
+		<%= link_to "Remove from cart", cart_item_path(id:cart_item.id), :confirm => 'Are you sure?', :class => "button",data: { "turbo-method": :delete }  %>
+		
+ 	</div>
+  <% end %>
+  <% if @cart_items !=[] %>
+  <%= link_to "place Order", 'http://localhost:3000/order_items',  data: { "turbo-method": :post }  %>
+  <% end %>
+
+</div>
+<%= link_to "back", products_path%>

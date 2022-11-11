@@ -1,5 +1,9 @@
 class CartItemsController < ApplicationController
 
+	def index
+		 @cart = Cart.last || Cart.create
+         @cart_items = @cart.cart_items
+	end
 	def create
 		@product = Product.find(params[:product_id])
 
@@ -16,6 +20,21 @@ class CartItemsController < ApplicationController
 		@cart = Cart.last
 		@cart_item = @cart.cart_items.find(params[:id])
 		@cart_item.destroy
-		redirect_to products_path
+		redirect_to cart_items_path
+	end
+
+	def increment
+		@cart_item = CartItem.find(params[:id])
+		@cart_item.increment!(:quantity)
+		redirect_to cart_items_path
+	end
+	def decrement
+		@cart_item = CartItem.find(params[:id])
+		if @cart_item.quantity <=1
+			redirect_to cart_items_path
+		else
+		@cart_item.decrement!(:quantity)
+		redirect_to cart_items_path
+		end
 	end
 end

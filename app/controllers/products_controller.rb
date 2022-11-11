@@ -1,11 +1,20 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all
-    @cart = Cart.last || Cart.create
-    @cart_items = @cart.cart_items
+    Product.paginates_per 3
+    page_number = params[:page] || 1 
 
-    
-    
+    if params[:orderby] == "1" 
+       @products = Product.order(productPrice: :desc).page(page_number)
+    elsif params[:orderby]== "0"
+       @products = Product.order(productPrice: :asc).page(page_number)
+    else
+       @products = Product.order(:productName).page(page_number)
+    end         
+
+
+
+    # @products = Product.order(productPrice: :params[:price]).page(page_number)
+
   end
  
   def search
@@ -15,4 +24,5 @@ class ProductsController < ApplicationController
     render 'index'
     # redirect_to products_path(@products)
   end
+
 end
