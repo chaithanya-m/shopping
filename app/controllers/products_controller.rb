@@ -11,8 +11,6 @@ class ProductsController < ApplicationController
        @products = Product.order(:productName).page(page_number)
     end         
 
-
-
     # @products = Product.order(productPrice: :params[:price]).page(page_number)
 
   end
