@@ -1,14 +1,20 @@
 class OrderItemsController < ApplicationController
 
 	def index
-		@orders = Order.all
-		# @order_items = @order.order_items
+		if current_user == nil
+			redirect_to new_user_session_path
+		else
+			@user = current_user 
+			@orders= @user.orders
+		end
+		
 	end
 	
 
 	def create
-		@order= Order.create
-		@cart = Cart.last
+		@user = current_user
+		@order= @user.orders.create
+		@cart = @user.cart
 		@cart_items = @cart.cart_items
 		@temp1 = @order.totalPrice
 		@temp3 = 0

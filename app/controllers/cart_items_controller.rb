@@ -1,13 +1,21 @@
 class CartItemsController < ApplicationController
 
 	def index
-		 @cart = Cart.last || Cart.create
-         @cart_items = @cart.cart_items
+		if current_user == nil
+			redirect_to new_user_session_path
+		else
+			@user = current_user
+			@cart= @user.cart || @user.create_cart
+			@cart_items = @cart.cart_items
+		end
+		
 	end
 	def create
+		@user = current_user
+
 		@product = Product.find(params[:product_id])
 
-		@cart= Cart.last || Cart.create
+		@cart= @user.cart
 
 		@cart_item = @cart.cart_items.create(:product_id => @product.id)
 		redirect_to products_path
