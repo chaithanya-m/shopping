@@ -1,9 +1,14 @@
 <h2>Order details</h2>
 <div>
-	<% @order_items.each do |order_item| %>
-	 <h3> <%= order_item.product.productName %></h3>
-	 <h4> price (for<%= order_item.quantity %> pices):Rs.<%= order_item.totalPrice %> </h4>
-	 <% end %>
+	<div class="row">
+		<% @order_items.each do |order_item| %>
+		<div class="col-3">
+			 <p> <%= order_item.product.productName %></p>
+			 <p> price (for<%= order_item.quantity %> pices):Rs.<%= order_item.totalPrice %> </p>
+		</div>
+		<% end %>
+	</div>
+	 
 </div>
 <%= link_to "back", products_path%>
 

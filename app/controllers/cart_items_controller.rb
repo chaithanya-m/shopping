@@ -11,6 +11,9 @@ class CartItemsController < ApplicationController
 		
 	end
 	def create
+		if current_user == nil
+			redirect_to new_user_session_path
+		else
 		@user = current_user
 
 		@product = Product.find(params[:product_id])
@@ -19,6 +22,7 @@ class CartItemsController < ApplicationController
 
 		@cart_item = @cart.cart_items.create(:product_id => @product.id)
 		redirect_to products_path
+		end
 		
 	end
 	def destroy

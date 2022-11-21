@@ -40,8 +40,9 @@ class OrderItemsController < ApplicationController
 
 		# binding.break
 		@order = Order.find(params[:id])
+		    # binding.break 
 		@order_item = @order.order_items
-		@order_item.destroy
+		@order_item.destroy_all
 		@order.destroy
 		redirect_to order_items_path
 	end

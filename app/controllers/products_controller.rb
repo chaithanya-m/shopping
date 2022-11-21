@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def index
-    Product.paginates_per 3
+    Product.paginates_per 5
     page_number = params[:page] || 1 
 
     if params[:orderby] == "1" 
@@ -17,7 +17,9 @@ class ProductsController < ApplicationController
  
   def search
     # binding.break 
-    @products = Product.where("productName LIKE ?", "%#{params[:search]}%")
+    Product.paginates_per 3
+    page_number = params[:page] || 1 
+    @products = Product.where("productName LIKE ?", "%#{params[:search]}%").page(page_number)
     
     render 'index'
     # redirect_to products_path(@products)

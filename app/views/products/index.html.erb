@@ -1,48 +1,36 @@
-
 <div>
-	<%= link_to "Cart", cart_items_path%>
-</div>
-
-<div>
-	<%= link_to "check orders", order_items_path%>
-</div>
-
-<h4>search for new produts</h4>
-  <form name="form1" method="get" action="/products">
+  <div class="row">
+    <div class="col-3">
+      <form name="form1" method="get" action="/products">
       <p>
-      <label for="price">sort by price:</label>
-      <select id="price" name="orderby" onChange="select_price(this);">
-      <option disabled selected value>default</option>
-      <option value="0">low to high</option>
-      <option value="1">high to low</option>
-      <option value="1">name</option>
-
-      </select>
+        <label for="price">sort by price:</label>
+        <select id="price" name="orderby" onChange="select_price(this);">
+          <option disabled selected value>default</option>
+          <option value="0">low to high</option>
+          <option value="1">high to low</option>
+          <option value="1">name</option>
+        </select>
       </p>
-      <input type="submit" >
+      <input type="submit" value="apply" >
     </form>
-    <p>
-    </p>
-
-<%= form_with url: products_search_products_path, method: :get do |form| %>
-  <%= form.text_field :search %>
-  <%= form.submit "Search" %>
-<% end %>
- 
-<div>
-	<% @products.each do |product| %>
-	<div>
-		<h3><%= product.productName %></h3>
-		<h4>Rs.<%= product.productPrice %></h4>
-		<%= link_to "Add to cart", 'http://localhost:3000/cart_items?'+{product_id:product.id}.to_param,  data: { "turbo-method": :post }  %>
- 	</div>
-
-      
-  <% end %>
-	
+    </div>
+    <div class="col-9">
+      <div class="row">
+          <% @products.each do |product| %>
+        <div class="col-4">  
+          <h5><%= product.productName %></h5>
+          <p>Rs.<%= product.productPrice %></p>
+          <%= link_to "Add to cart", 'http://localhost:3000/cart_items?'+{product_id:product.id}.to_param,  data: { "turbo-method": :post }  %>
+        </div>
+        <% end %>
+      </div>
+      <div>
+        <%= paginate @products  %>    
+      </div>
+    </div>
+  </div>
 </div>
-<div>
-	<%= paginate @products  %>
 
-<
+	
+
   

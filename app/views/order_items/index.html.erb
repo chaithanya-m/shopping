@@ -2,22 +2,22 @@
 	<h2>Ordered products</h2>
 	
 	<div>
-		<table>
+		<table class="table">
 			<tr>
-				<th>order id</th>
-				<th>total products</th>
-				<th>total price</th>
-				<th>check order</th>
-				<th>cancel order</th>
+				<th scope="col">order id</th>
+				<th scope="col">total products</th>
+				<th scope="col">total price</th>
+				<th scope="col">check order</th>
+				<th scope="col">cancel order</th>
+				<% @orders.each do |order| %>
 			</tr>
-			<% @orders.each do |order| %>
+			
 			<tr>
-				
-					<tb> <%= order.id%></tb>
-					<td> <%= order.no_OfItems %></td>
-					<td> Rs.<%= order.totalPrice %></td>
-					<td> <%= link_to "check order", order_path(id:order.id) %></td>
-					<td> <%= link_to "cancel order", order_item_path(id:order.id), data: { "turbo-method": :delete }  %></td>
+				<td> <%= order.id%></td>
+				<td> <%= order.no_OfItems %></td>
+				<td> Rs.<%= order.totalPrice %></td>
+				<td> <%= link_to "check order", order_path(id:order.id) %></td>
+				<td> <%= link_to "cancel order", order_item_path(id:order.id), data: { "turbo-method": :delete }  %></td>
 
 			</tr>
 			<% end %>
