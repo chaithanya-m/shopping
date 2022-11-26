@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   def index
+    # binding.break
     Product.paginates_per 5
     page_number = params[:page] || 1 
 
