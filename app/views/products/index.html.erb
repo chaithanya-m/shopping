@@ -20,10 +20,32 @@
     <div class="col-9">
       <div class="row">
           <% @products.each do |product| %>
-        <div class="col-4">  
-          <h5><%= product.productName %></h5>
-          <p>Rs.<%= product.productPrice %></p>
-          <%= link_to "Add to cart", 'http://localhost:3000/cart_items?'+{product_id:product.id}.to_param,  data: { "turbo-method": :post }  %>
+        <div class="col-12" style="margin-top: 15px;">
+          <div class="row" >
+            <div class="col-3" style="padding: 10px;">
+              <% if product.picture == nil %>
+              <% else %>
+              <div style="text-align: center;">
+                <%= image_tag product.picture.image.variant(resize_to_limit: [200,200]) %>
+              </div>
+                
+              <% end %>
+            </div>
+            <div class="col-6">
+              <h5><%= product.productName %></h5>
+              <ul>
+                <li><%= product.memory %></li>
+                <li><%= product.displaySize %></li>
+                <li><%= product.camaras %></li>
+                <li><%= product.battery %></li>
+                <li><%= product.processor %></li>
+              </ul>
+            </div>
+            <div class="col-3">
+              <h5>Rs.<%= product.productPrice.to_s(:delimited) %></h5>
+              <%= link_to "Add to cart", 'http://localhost:3000/cart_items?'+{product_id:product.id}.to_param,  data: { "turbo-method": :post }  %>
+            </div>
+          </div>
         </div>
         <% end %>
       </div>

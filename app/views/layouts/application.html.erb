@@ -69,10 +69,10 @@
             <div class="row">
               <% if user_signed_in? %>
               <div class="col-8  link" style="text-decoration: none;">
-                <%= link_to  edit_user_registration_path do %>
-                <% if current_user.picture == nil %>
+                 <% if current_user.picture == nil %>
                     <%= link_to current_user.email,edit_user_registration_path %>
-                <% else %>
+                 <% else %>
+                   <%= link_to  edit_user_registration_path do %>
                   <%= image_tag current_user.picture.image.variant(resize_to_limit: [20, 20]) %>
                   <% end %>
                 <% end %>

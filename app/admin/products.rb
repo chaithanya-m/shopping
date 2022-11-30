@@ -1,3 +1,4 @@
+
 ActiveAdmin.register Product do
 
   # See permitted parameters documentation:
@@ -5,7 +6,7 @@ ActiveAdmin.register Product do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :productName, :productPrice, :productImage
+  permit_params :productName, :productPrice ,:memory, :displaySize, :camaras,:battery,:processor
   #
   # or
   #

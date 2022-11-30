@@ -1,0 +1,10 @@
+<%= semantic_form_for [:admin, @product_picture], url: admin_product_pictures_path, builder: ActiveAdmin::FormBuilder do |f| %>
+
+    <%= f.inputs do %>
+      <%= f.input :imageable_id, :label => "Product", as: :select, :collection => Product.all %>
+      
+      <%= f.input :imageable_type, as: :hidden, :input_html => { :value => "Product"} %>
+      <%= f.input :image, as: :file %>
+      <%= f.actions %>
+    <% end %>
+<% end %>

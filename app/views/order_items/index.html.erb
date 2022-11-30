@@ -15,7 +15,7 @@
 			<tr>
 				<td> <%= order.id%></td>
 				<td> <%= order.no_OfItems %></td>
-				<td> Rs.<%= order.totalPrice %></td>
+				<td> Rs.<%= order.totalPrice.to_s(:delimited) %></td>
 				<td> <%= link_to "check order", order_path(id:order.id) %></td>
 				<td> <%= link_to "cancel order", order_item_path(id:order.id), data: { "turbo-method": :delete }  %></td>
 
