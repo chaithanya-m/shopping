@@ -1,0 +1,27 @@
+
+
+<div>
+	<p> your order id is place</p>
+	<p> here is the order details</p>
+	<div>
+		<table class="table">
+			<tr>
+				<th scope="col">order id</th>
+				<th scope="col">total products</th>
+				<th scope="col">total price</th>
+			</tr>
+			
+			<tr>
+				<td> <%= @order.id %></td>
+				<td> <%= @order.no_OfItems %></td>
+				<td> Rs.<%= @order.totalPrice.to_s(:delimited) %></td>
+				
+
+			</tr>
+			<% link_to "chech all ordes" , @url %>
+
+		</table>
+	</div>
+	<p></p>
+
+</div>
