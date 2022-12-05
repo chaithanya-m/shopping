@@ -26,12 +26,13 @@ class CartItemsController < ApplicationController
 		
 	end
 	def destroy
-
 		# binding.break
 
-		@cart = Cart.last
+		@user = current_user
+		@cart = @user.cart 
 		@cart_item = @cart.cart_items.find(params[:id])
 		@cart_item.destroy
+
 		redirect_to cart_items_path
 	end
 

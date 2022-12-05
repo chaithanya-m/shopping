@@ -33,6 +33,10 @@ class OrderItemsController < ApplicationController
 		@order.update(:no_OfItems => @temp3)
 
 		@cart_items.destroy_all
+		 # OrdermailMailer.with(order: @order ).orderPlaced_email.deliver_later
+		 ProductAddedJob.perform_later @order.id
+
+
 		redirect_to products_path
 	end
 
