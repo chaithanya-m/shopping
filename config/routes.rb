@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+  # devise_for :admin_users, ActiveAdmin::Devise.config
+  # ActiveAdmin.routes(self)
+  resources :pictures do
+  end
   devise_for :users
   root 'products#index'
 
@@ -10,8 +14,7 @@ Rails.application.routes.draw do
     end
 
   end
-  # resources :carts do
-  # end
+  
   resources :cart_items do
     member do 
       post :increment
